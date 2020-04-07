@@ -1,6 +1,6 @@
 using AzureStorage.Core.Handles;
-using AzureStorage.Infra.Contract;
-using AzureStorage.Infra.Repository;
+using AzureStorage.Infra.Contracts;
+using AzureStorage.Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

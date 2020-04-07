@@ -1,6 +1,6 @@
 ﻿using AzureStorage.Core.Commands;
 using AzureStorage.Core.Handles;
-using AzureStorage.Infra.Contract;
+using AzureStorage.Infra.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -21,9 +21,9 @@ namespace AzureStorage.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save(IFormFile file, [FromForm]ProductCreateCommand command)
+        public async Task<IActionResult> Save(IFormFile file, [FromForm]ProductCreateCommand command)
         {
-            var imageUrl = _fileService.Upload(file);
+            var imageUrl = await _fileService.Upload(file);
             command.ImageUrl = imageUrl;
 
             var result = _productHandler.Handle(command);

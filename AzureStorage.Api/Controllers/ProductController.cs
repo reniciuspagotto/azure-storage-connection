@@ -1,4 +1,5 @@
 ﻿using AzureStorage.Core.Commands;
+using AzureStorage.Core.Contracts;
 using AzureStorage.Core.Handles;
 using AzureStorage.Infra.Contracts;
 using Microsoft.AspNetCore.Http;
@@ -13,11 +14,13 @@ namespace AzureStorage.Api.Controllers
     {
         private readonly ProductHandle _productHandler;
         private readonly IFileRepository _fileService;
+        private readonly IProductRepository _productRepository;
 
-        public ProductController(ProductHandle productHandler, IFileRepository fileService)
+        public ProductController(ProductHandle productHandler, IFileRepository fileService, IProductRepository productRepository)
         {
             _productHandler = productHandler;
             _fileService = fileService;
+            _productRepository = productRepository;
         }
 
         [HttpPost]
@@ -28,6 +31,12 @@ namespace AzureStorage.Api.Controllers
 
             var result = _productHandler.Handle(command);
             return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return await Task.FromResult(Ok(_productRepository.GetAll()));
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AzureStorage.Infra.Options
+﻿namespace AzureStorage.Infra.Options
 {
     public class StorageConfiguration
     {

@@ -2,6 +2,7 @@ using AzureStorage.Core.Contracts;
 using AzureStorage.Core.Handles;
 using AzureStorage.Infra.Context;
 using AzureStorage.Infra.Contracts;
+using AzureStorage.Infra.Options;
 using AzureStorage.Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,9 @@ namespace AzureStorage.Api
         {
             services.AddControllers().AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddOptions();
+            services.Configure<StorageConfiguration>(Configuration.GetSection("StorageConfiguration"));
 
             services.AddTransient<ProductHandle, ProductHandle>();
             services.AddTransient<IFileRepository, FileRepository>();

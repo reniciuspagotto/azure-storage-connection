@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureStorage.Core", "AzureS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureStorage.Infra", "AzureStorage.Infra\AzureStorage.Infra.csproj", "{4F4E6918-EFF3-46C2-A1A2-EAC2125A4508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureStorage.ApiSample", "AzureStorage.ApiSample\AzureStorage.ApiSample.csproj", "{6546C600-5CC5-4EE0-B65E-68B846A4466E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OneLayer", "OneLayer", "{74552961-6FC8-4240-A305-65E0AF3B95A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManyLayers", "ManyLayers", "{DA084D67-61C3-42C9-9C8D-3952BCE9E524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +33,19 @@ Global
 		{4F4E6918-EFF3-46C2-A1A2-EAC2125A4508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F4E6918-EFF3-46C2-A1A2-EAC2125A4508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F4E6918-EFF3-46C2-A1A2-EAC2125A4508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6546C600-5CC5-4EE0-B65E-68B846A4466E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6546C600-5CC5-4EE0-B65E-68B846A4466E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6546C600-5CC5-4EE0-B65E-68B846A4466E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6546C600-5CC5-4EE0-B65E-68B846A4466E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5EE89D42-8813-45B5-A635-B35B744CED04} = {DA084D67-61C3-42C9-9C8D-3952BCE9E524}
+		{2B551CE9-E0A0-4708-83FC-E4D8E10CA2E6} = {DA084D67-61C3-42C9-9C8D-3952BCE9E524}
+		{4F4E6918-EFF3-46C2-A1A2-EAC2125A4508} = {DA084D67-61C3-42C9-9C8D-3952BCE9E524}
+		{6546C600-5CC5-4EE0-B65E-68B846A4466E} = {74552961-6FC8-4240-A305-65E0AF3B95A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F126965-2698-4542-8EDF-50CD91C1FE2C}

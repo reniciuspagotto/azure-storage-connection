@@ -4,7 +4,7 @@ using AzureStorage.Core.Entities;
 
 namespace AzureStorage.Core.Handles
 {
-    public class ProductHandle : IHandle<ProductCreateCommand>
+    public class ProductHandle : IHandle<CreateProductCommand>
     {
         private readonly IProductRepository _productRepository;
 
@@ -13,7 +13,7 @@ namespace AzureStorage.Core.Handles
             _productRepository = productRepository;
         }
 
-        public object Handle(ProductCreateCommand command)
+        public object Handle(CreateProductCommand command)
         {
             _productRepository.Save(new Product(command.Name, command.Price, command.ImageUrl));
             return command;

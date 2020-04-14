@@ -24,7 +24,7 @@ namespace AzureStorage.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(IFormFile file, [FromForm]ProductCreateCommand command)
+        public async Task<IActionResult> Save(IFormFile file, [FromForm]CreateProductCommand command)
         {
             var imageUrl = await _fileService.Upload(file);
             command.ImageUrl = imageUrl;

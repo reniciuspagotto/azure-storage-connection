@@ -1,4 +1,4 @@
-﻿namespace AzureStorage.ApiSample
+﻿namespace AzureStorage.ApiSample.Entity
 {
     public class Product
     {

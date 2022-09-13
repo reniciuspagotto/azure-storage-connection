@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AzureStorage.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class ProductController : ControllerBase
     {
         private readonly ProductHandle _productHandler;

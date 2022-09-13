@@ -1,9 +1,8 @@
-﻿using AzureStorage.ApiSample.Entity;
+﻿using Azure.Storage.Blobs;
+using AzureStorage.ApiSample.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using System.Threading.Tasks;
 
 namespace AzureStorage.ApiSample.Controllers
@@ -29,20 +28,16 @@ namespace AzureStorage.ApiSample.Controllers
 
         private async Task<string> Upload(IFormFile file)
         {
-            var accountName = _configuration["StorageConfiguration:AccountName"];
-            var accountKey = _configuration["StorageConfiguration:AccountKey"];
+            var connectionString = _configuration["StorageConfiguration:ConnectionString"];
             var containerName = _configuration["StorageConfiguration:ContainerName"];
 
-            var storageCredentials = new StorageCredentials(accountName, accountKey);
-            var storageAccount = new CloudStorageAccount(storageCredentials, true);
-            var blobAzure = storageAccount.CreateCloudBlobClient();
-            var container = blobAzure.GetContainerReference(containerName);
+            BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
 
-            var blob = container.GetBlockBlobReference(file.FileName);
-            blob.Properties.ContentType = file.ContentType; // Aqui é definido o tipo do arquivo
-            await blob.UploadFromStreamAsync(file.OpenReadStream());
+            BlobClient blob = container.GetBlobClient(file.FileName);
 
-            return blob.SnapshotQualifiedStorageUri.PrimaryUri.ToString();
+            await blob.UploadAsync(file.OpenReadStream());
+
+            return blob.Uri.AbsoluteUri.ToString();
         }
     }
 }
